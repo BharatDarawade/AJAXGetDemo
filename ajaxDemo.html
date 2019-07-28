@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<!DOCTYPE html>
+<html>
+
+        <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<body>
+
+<style>
+.ajaxBtn{
+
+color: aqua;
+
+}
+.userDetails{
+    color: blueviolet;
+    border-style: solid;
+  border-width: 2px 2px 2px 2px;
+    border-color:gray;
+}
+
+</style>
+
+<div class="main">
+
+    <button class="ajaxBtn" value="callAjax" onclick="getData()"> callAjax</button>
+
+    <div class="display-data">
+
+    </div>
+
+</div>
+</body>
+
+
+<script>
+
+$(".ajaxBtn").click(function() {
+    $.ajax({url:"https://jsonplaceholder.typicode.com/users",
+    method:"GET",
+    }).done(function(data){
+
+        var str='';
+
+        for(var i=0;i<data.length;i++){
+            str=str+'<div class="userDetails"> '+
+            '<p> user id '+data[i].id 
+            +
+            "</p>"
+
+            +
+            '<p> name: '+data[i].name
+            +
+            "</p>"
+            +
+            '<p> email: '+data[i].email
+            +
+            "</p>"   
+
+
+            +' <br></div>';
+            console.log(data[i].email);
+
+
+        }
+
+        $(".display-data").append(str);
+
+});
+
+
+})
+
+function getData(){
+
+console.log("btn click ");
+
+};
+
+</script>
+
+
+</html>
